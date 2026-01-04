@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package product;
+
+option go_package = "github.com/goggle-source/productLotoProto/gen/go/product;product";
+
+service ProductServic {
+    rpc GetsProduct(GetProductsRequest) returns (GetProductsResponse);
+    rpc BuyProduct(BuyProductRequest) returns (BuyProductResponse);
+    rpc SellProduct(SellProductRequest) returns (SellProductResponse);
+}
+
+message Product {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    double price = 4;
+    int32 count = 5;
+}
+
+message GetProductsRequest {}
+message GetProductsResponse {
+    repeated Product products = 1;
+}
+
+message BuyProductRequest {
+    string productId = 1;
+}
+
+message BuyProductResponse {
+    bool success = 1;
+}
+
+message SellProductRequest {
+    string productId = 1;
+}
+
+message SellProductResponse {
+    bool success = 1;
+}
