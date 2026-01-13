@@ -22,6 +22,7 @@ const (
 	ProductServic_GetsProduct_FullMethodName = "/product.ProductServic/GetsProduct"
 	ProductServic_BuyProduct_FullMethodName  = "/product.ProductServic/BuyProduct"
 	ProductServic_SellProduct_FullMethodName = "/product.ProductServic/SellProduct"
+	ProductServic_Health_FullMethodName      = "/product.ProductServic/Health"
 )
 
 // ProductServicClient is the client API for ProductServic service.
@@ -31,6 +32,7 @@ type ProductServicClient interface {
 	GetsProduct(ctx context.Context, in *GetProductsRequest, opts ...grpc.CallOption) (*GetProductsResponse, error)
 	BuyProduct(ctx context.Context, in *BuyProductRequest, opts ...grpc.CallOption) (*BuyProductResponse, error)
 	SellProduct(ctx context.Context, in *SellProductRequest, opts ...grpc.CallOption) (*SellProductResponse, error)
+	Health(ctx context.Context, in *HealthProductRequest, opts ...grpc.CallOption) (*HealthProductResponse, error)
 }
 
 type productServicClient struct {
@@ -71,6 +73,16 @@ func (c *productServicClient) SellProduct(ctx context.Context, in *SellProductRe
 	return out, nil
 }
 
+func (c *productServicClient) Health(ctx context.Context, in *HealthProductRequest, opts ...grpc.CallOption) (*HealthProductResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(HealthProductResponse)
+	err := c.cc.Invoke(ctx, ProductServic_Health_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProductServicServer is the server API for ProductServic service.
 // All implementations must embed UnimplementedProductServicServer
 // for forward compatibility.
@@ -78,6 +90,7 @@ type ProductServicServer interface {
 	GetsProduct(context.Context, *GetProductsRequest) (*GetProductsResponse, error)
 	BuyProduct(context.Context, *BuyProductRequest) (*BuyProductResponse, error)
 	SellProduct(context.Context, *SellProductRequest) (*SellProductResponse, error)
+	Health(context.Context, *HealthProductRequest) (*HealthProductResponse, error)
 	mustEmbedUnimplementedProductServicServer()
 }
 
@@ -96,6 +109,9 @@ func (UnimplementedProductServicServer) BuyProduct(context.Context, *BuyProductR
 }
 func (UnimplementedProductServicServer) SellProduct(context.Context, *SellProductRequest) (*SellProductResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SellProduct not implemented")
+}
+func (UnimplementedProductServicServer) Health(context.Context, *HealthProductRequest) (*HealthProductResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Health not implemented")
 }
 func (UnimplementedProductServicServer) mustEmbedUnimplementedProductServicServer() {}
 func (UnimplementedProductServicServer) testEmbeddedByValue()                       {}
@@ -172,6 +188,24 @@ func _ProductServic_SellProduct_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProductServic_Health_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(HealthProductRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServicServer).Health(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductServic_Health_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServicServer).Health(ctx, req.(*HealthProductRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProductServic_ServiceDesc is the grpc.ServiceDesc for ProductServic service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -190,6 +224,10 @@ var ProductServic_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SellProduct",
 			Handler:    _ProductServic_SellProduct_Handler,
+		},
+		{
+			MethodName: "Health",
+			Handler:    _ProductServic_Health_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

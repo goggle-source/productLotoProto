@@ -2,12 +2,15 @@ syntax = "proto3";
 
 package product;
 
+import "google/protobuf/any.proto";
+
 option go_package = "github.com/goggle-source/productLotoProto/gen/go/product;product";
 
 service ProductServic {
     rpc GetsProduct(GetProductsRequest) returns (GetProductsResponse);
     rpc BuyProduct(BuyProductRequest) returns (BuyProductResponse);
     rpc SellProduct(SellProductRequest) returns (SellProductResponse);
+    rpc Health(HealthProductRequest) returns (HealthProductResponse);
 }
 
 message Product {
@@ -25,6 +28,7 @@ message GetProductsResponse {
 
 message BuyProductRequest {
     string productId = 1;
+    string userId = 2;
 }
 
 message BuyProductResponse {
@@ -37,4 +41,10 @@ message SellProductRequest {
 
 message SellProductResponse {
     bool success = 1;
+}
+
+message HealthProductRequest {}
+
+message HealthProductResponse{
+    map<string, google.protobuf.Any> info = 1;
 }
