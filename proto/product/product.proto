@@ -22,13 +22,13 @@ message Product {
 }
 
 message GetProductsRequest {}
+
 message GetProductsResponse {
     repeated Product products = 1;
 }
 
 message BuyProductRequest {
     string productId = 1;
-    string userId = 2;
 }
 
 message BuyProductResponse {

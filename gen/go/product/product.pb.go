@@ -181,7 +181,6 @@ func (x *GetProductsResponse) GetProducts() []*Product {
 type BuyProductRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductId     string                 `protobuf:"bytes,1,opt,name=productId,proto3" json:"productId,omitempty"`
-	UserId        string                 `protobuf:"bytes,2,opt,name=userId,proto3" json:"userId,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -219,13 +218,6 @@ func (*BuyProductRequest) Descriptor() ([]byte, []int) {
 func (x *BuyProductRequest) GetProductId() string {
 	if x != nil {
 		return x.ProductId
-	}
-	return ""
-}
-
-func (x *BuyProductRequest) GetUserId() string {
-	if x != nil {
-		return x.UserId
 	}
 	return ""
 }
@@ -455,10 +447,9 @@ const file_product_proto_rawDesc = "" +
 	"\x05count\x18\x05 \x01(\x05R\x05count\"\x14\n" +
 	"\x12GetProductsRequest\"C\n" +
 	"\x13GetProductsResponse\x12,\n" +
-	"\bproducts\x18\x01 \x03(\v2\x10.product.ProductR\bproducts\"I\n" +
+	"\bproducts\x18\x01 \x03(\v2\x10.product.ProductR\bproducts\"1\n" +
 	"\x11BuyProductRequest\x12\x1c\n" +
-	"\tproductId\x18\x01 \x01(\tR\tproductId\x12\x16\n" +
-	"\x06userId\x18\x02 \x01(\tR\x06userId\".\n" +
+	"\tproductId\x18\x01 \x01(\tR\tproductId\".\n" +
 	"\x12BuyProductResponse\x12\x18\n" +
 	"\asuccess\x18\x01 \x01(\bR\asuccess\"2\n" +
 	"\x12SellProductRequest\x12\x1c\n" +
