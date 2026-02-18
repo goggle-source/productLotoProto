@@ -10,6 +10,7 @@ service ProductServic {
     rpc GetsProduct(GetProductsRequest) returns (GetProductsResponse);
     rpc BuyProduct(BuyProductRequest) returns (BuyProductResponse);
     rpc SellProduct(SellProductRequest) returns (SellProductResponse);
+    rpc GetsProductUser(GetsProductToUserRequest) returns (GetsProductTouserResponse);
     rpc Health(HealthProductRequest) returns (HealthProductResponse);
 }
 
@@ -47,4 +48,10 @@ message HealthProductRequest {}
 
 message HealthProductResponse{
     map<string, google.protobuf.Any> info = 1;
+}
+
+message GetsProductToUserRequest {}
+
+message GetsProductTouserResponse {
+    repeated Product products = 1;
 }

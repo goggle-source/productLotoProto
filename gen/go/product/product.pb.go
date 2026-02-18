@@ -434,6 +434,86 @@ func (x *HealthProductResponse) GetInfo() map[string]*anypb.Any {
 	return nil
 }
 
+type GetsProductToUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetsProductToUserRequest) Reset() {
+	*x = GetsProductToUserRequest{}
+	mi := &file_product_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetsProductToUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetsProductToUserRequest) ProtoMessage() {}
+
+func (x *GetsProductToUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetsProductToUserRequest.ProtoReflect.Descriptor instead.
+func (*GetsProductToUserRequest) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{9}
+}
+
+type GetsProductTouserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Products      []*Product             `protobuf:"bytes,1,rep,name=products,proto3" json:"products,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetsProductTouserResponse) Reset() {
+	*x = GetsProductTouserResponse{}
+	mi := &file_product_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetsProductTouserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetsProductTouserResponse) ProtoMessage() {}
+
+func (x *GetsProductTouserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetsProductTouserResponse.ProtoReflect.Descriptor instead.
+func (*GetsProductTouserResponse) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *GetsProductTouserResponse) GetProducts() []*Product {
+	if x != nil {
+		return x.Products
+	}
+	return nil
+}
+
 var File_product_proto protoreflect.FileDescriptor
 
 const file_product_proto_rawDesc = "" +
@@ -461,12 +541,16 @@ const file_product_proto_rawDesc = "" +
 	"\x04info\x18\x01 \x03(\v2(.product.HealthProductResponse.InfoEntryR\x04info\x1aM\n" +
 	"\tInfoEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12*\n" +
-	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value:\x028\x012\xb3\x02\n" +
+	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value:\x028\x01\"\x1a\n" +
+	"\x18GetsProductToUserRequest\"I\n" +
+	"\x19GetsProductTouserResponse\x12,\n" +
+	"\bproducts\x18\x01 \x03(\v2\x10.product.ProductR\bproducts2\x8d\x03\n" +
 	"\rProductServic\x12H\n" +
 	"\vGetsProduct\x12\x1b.product.GetProductsRequest\x1a\x1c.product.GetProductsResponse\x12E\n" +
 	"\n" +
 	"BuyProduct\x12\x1a.product.BuyProductRequest\x1a\x1b.product.BuyProductResponse\x12H\n" +
-	"\vSellProduct\x12\x1b.product.SellProductRequest\x1a\x1c.product.SellProductResponse\x12G\n" +
+	"\vSellProduct\x12\x1b.product.SellProductRequest\x1a\x1c.product.SellProductResponse\x12X\n" +
+	"\x0fGetsProductUser\x12!.product.GetsProductToUserRequest\x1a\".product.GetsProductTouserResponse\x12G\n" +
 	"\x06Health\x12\x1d.product.HealthProductRequest\x1a\x1e.product.HealthProductResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
 
 var (
@@ -481,37 +565,42 @@ func file_product_proto_rawDescGZIP() []byte {
 	return file_product_proto_rawDescData
 }
 
-var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_product_proto_goTypes = []any{
-	(*Product)(nil),               // 0: product.Product
-	(*GetProductsRequest)(nil),    // 1: product.GetProductsRequest
-	(*GetProductsResponse)(nil),   // 2: product.GetProductsResponse
-	(*BuyProductRequest)(nil),     // 3: product.BuyProductRequest
-	(*BuyProductResponse)(nil),    // 4: product.BuyProductResponse
-	(*SellProductRequest)(nil),    // 5: product.SellProductRequest
-	(*SellProductResponse)(nil),   // 6: product.SellProductResponse
-	(*HealthProductRequest)(nil),  // 7: product.HealthProductRequest
-	(*HealthProductResponse)(nil), // 8: product.HealthProductResponse
-	nil,                           // 9: product.HealthProductResponse.InfoEntry
-	(*anypb.Any)(nil),             // 10: google.protobuf.Any
+	(*Product)(nil),                   // 0: product.Product
+	(*GetProductsRequest)(nil),        // 1: product.GetProductsRequest
+	(*GetProductsResponse)(nil),       // 2: product.GetProductsResponse
+	(*BuyProductRequest)(nil),         // 3: product.BuyProductRequest
+	(*BuyProductResponse)(nil),        // 4: product.BuyProductResponse
+	(*SellProductRequest)(nil),        // 5: product.SellProductRequest
+	(*SellProductResponse)(nil),       // 6: product.SellProductResponse
+	(*HealthProductRequest)(nil),      // 7: product.HealthProductRequest
+	(*HealthProductResponse)(nil),     // 8: product.HealthProductResponse
+	(*GetsProductToUserRequest)(nil),  // 9: product.GetsProductToUserRequest
+	(*GetsProductTouserResponse)(nil), // 10: product.GetsProductTouserResponse
+	nil,                               // 11: product.HealthProductResponse.InfoEntry
+	(*anypb.Any)(nil),                 // 12: google.protobuf.Any
 }
 var file_product_proto_depIdxs = []int32{
 	0,  // 0: product.GetProductsResponse.products:type_name -> product.Product
-	9,  // 1: product.HealthProductResponse.info:type_name -> product.HealthProductResponse.InfoEntry
-	10, // 2: product.HealthProductResponse.InfoEntry.value:type_name -> google.protobuf.Any
-	1,  // 3: product.ProductServic.GetsProduct:input_type -> product.GetProductsRequest
-	3,  // 4: product.ProductServic.BuyProduct:input_type -> product.BuyProductRequest
-	5,  // 5: product.ProductServic.SellProduct:input_type -> product.SellProductRequest
-	7,  // 6: product.ProductServic.Health:input_type -> product.HealthProductRequest
-	2,  // 7: product.ProductServic.GetsProduct:output_type -> product.GetProductsResponse
-	4,  // 8: product.ProductServic.BuyProduct:output_type -> product.BuyProductResponse
-	6,  // 9: product.ProductServic.SellProduct:output_type -> product.SellProductResponse
-	8,  // 10: product.ProductServic.Health:output_type -> product.HealthProductResponse
-	7,  // [7:11] is the sub-list for method output_type
-	3,  // [3:7] is the sub-list for method input_type
-	3,  // [3:3] is the sub-list for extension type_name
-	3,  // [3:3] is the sub-list for extension extendee
-	0,  // [0:3] is the sub-list for field type_name
+	11, // 1: product.HealthProductResponse.info:type_name -> product.HealthProductResponse.InfoEntry
+	0,  // 2: product.GetsProductTouserResponse.products:type_name -> product.Product
+	12, // 3: product.HealthProductResponse.InfoEntry.value:type_name -> google.protobuf.Any
+	1,  // 4: product.ProductServic.GetsProduct:input_type -> product.GetProductsRequest
+	3,  // 5: product.ProductServic.BuyProduct:input_type -> product.BuyProductRequest
+	5,  // 6: product.ProductServic.SellProduct:input_type -> product.SellProductRequest
+	9,  // 7: product.ProductServic.GetsProductUser:input_type -> product.GetsProductToUserRequest
+	7,  // 8: product.ProductServic.Health:input_type -> product.HealthProductRequest
+	2,  // 9: product.ProductServic.GetsProduct:output_type -> product.GetProductsResponse
+	4,  // 10: product.ProductServic.BuyProduct:output_type -> product.BuyProductResponse
+	6,  // 11: product.ProductServic.SellProduct:output_type -> product.SellProductResponse
+	10, // 12: product.ProductServic.GetsProductUser:output_type -> product.GetsProductTouserResponse
+	8,  // 13: product.ProductServic.Health:output_type -> product.HealthProductResponse
+	9,  // [9:14] is the sub-list for method output_type
+	4,  // [4:9] is the sub-list for method input_type
+	4,  // [4:4] is the sub-list for extension type_name
+	4,  // [4:4] is the sub-list for extension extendee
+	0,  // [0:4] is the sub-list for field type_name
 }
 
 func init() { file_product_proto_init() }
@@ -525,7 +614,7 @@ func file_product_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_product_proto_rawDesc), len(file_product_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
