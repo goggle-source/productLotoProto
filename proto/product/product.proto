@@ -12,7 +12,7 @@ service ProductServic {
     rpc SellProduct(SellProductRequest) returns (SellProductResponse);
     rpc GetsProductUser(GetsProductToUserRequest) returns (GetsProductTouserResponse);
     rpc Health(HealthProductRequest) returns (HealthProductResponse);
-    rpc CheckingProductIDUSer(CheckingProductIDRequest) returns (CheckingProductIDResponse);
+    rpc CheckingProductIDTheUserHas(CheckingProductIDTheUserHasRequest) returns (CheckingProductIDTheUserHasResponse);
 }
 
 message Product {
@@ -57,11 +57,10 @@ message GetsProductTouserResponse {
     repeated Product products = 1;
 }
 
-message CheckingProductIDRequest {
+message CheckingProductIDTheUserHasRequest {
     string productID = 1; 
-    string userID = 2; 
 }
 
-message CheckingProductIDResponse {
+message CheckingProductIDTheUserHasResponse {
     bool result = 1;
 }
