@@ -12,7 +12,7 @@ service ProductServic {
     rpc SellProduct(SellProductRequest) returns (SellProductResponse);
     rpc GetsProductUser(GetsProductToUserRequest) returns (GetsProductTouserResponse);
     rpc Health(HealthProductRequest) returns (HealthProductResponse);
-    rpc CheckingProductID(CheckingProductIDRequest) returns (CheckingProductIDResponse);
+    rpc CheckingProductIDUSer(CheckingProductIDRequest) returns (CheckingProductIDResponse);
 }
 
 message Product {
@@ -59,6 +59,7 @@ message GetsProductTouserResponse {
 
 message CheckingProductIDRequest {
     string productID = 1; 
+    string userID = 2; 
 }
 
 message CheckingProductIDResponse {

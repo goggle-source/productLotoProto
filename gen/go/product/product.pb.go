@@ -517,6 +517,7 @@ func (x *GetsProductTouserResponse) GetProducts() []*Product {
 type CheckingProductIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ProductID     string                 `protobuf:"bytes,1,opt,name=productID,proto3" json:"productID,omitempty"`
+	UserID        string                 `protobuf:"bytes,2,opt,name=userID,proto3" json:"userID,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -554,6 +555,13 @@ func (*CheckingProductIDRequest) Descriptor() ([]byte, []int) {
 func (x *CheckingProductIDRequest) GetProductID() string {
 	if x != nil {
 		return x.ProductID
+	}
+	return ""
+}
+
+func (x *CheckingProductIDRequest) GetUserID() string {
+	if x != nil {
+		return x.UserID
 	}
 	return ""
 }
@@ -632,19 +640,20 @@ const file_product_proto_rawDesc = "" +
 	"\x05value\x18\x02 \x01(\v2\x14.google.protobuf.AnyR\x05value:\x028\x01\"\x1a\n" +
 	"\x18GetsProductToUserRequest\"I\n" +
 	"\x19GetsProductTouserResponse\x12,\n" +
-	"\bproducts\x18\x01 \x03(\v2\x10.product.ProductR\bproducts\"8\n" +
+	"\bproducts\x18\x01 \x03(\v2\x10.product.ProductR\bproducts\"P\n" +
 	"\x18CheckingProductIDRequest\x12\x1c\n" +
-	"\tproductID\x18\x01 \x01(\tR\tproductID\"3\n" +
+	"\tproductID\x18\x01 \x01(\tR\tproductID\x12\x16\n" +
+	"\x06userID\x18\x02 \x01(\tR\x06userID\"3\n" +
 	"\x19CheckingProductIDResponse\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\bR\x06result2\xe9\x03\n" +
+	"\x06result\x18\x01 \x01(\bR\x06result2\xed\x03\n" +
 	"\rProductServic\x12H\n" +
 	"\vGetsProduct\x12\x1b.product.GetProductsRequest\x1a\x1c.product.GetProductsResponse\x12E\n" +
 	"\n" +
 	"BuyProduct\x12\x1a.product.BuyProductRequest\x1a\x1b.product.BuyProductResponse\x12H\n" +
 	"\vSellProduct\x12\x1b.product.SellProductRequest\x1a\x1c.product.SellProductResponse\x12X\n" +
 	"\x0fGetsProductUser\x12!.product.GetsProductToUserRequest\x1a\".product.GetsProductTouserResponse\x12G\n" +
-	"\x06Health\x12\x1d.product.HealthProductRequest\x1a\x1e.product.HealthProductResponse\x12Z\n" +
-	"\x11CheckingProductID\x12!.product.CheckingProductIDRequest\x1a\".product.CheckingProductIDResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
+	"\x06Health\x12\x1d.product.HealthProductRequest\x1a\x1e.product.HealthProductResponse\x12^\n" +
+	"\x15CheckingProductIDUSer\x12!.product.CheckingProductIDRequest\x1a\".product.CheckingProductIDResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
 
 var (
 	file_product_proto_rawDescOnce sync.Once
@@ -686,13 +695,13 @@ var file_product_proto_depIdxs = []int32{
 	5,  // 6: product.ProductServic.SellProduct:input_type -> product.SellProductRequest
 	9,  // 7: product.ProductServic.GetsProductUser:input_type -> product.GetsProductToUserRequest
 	7,  // 8: product.ProductServic.Health:input_type -> product.HealthProductRequest
-	11, // 9: product.ProductServic.CheckingProductID:input_type -> product.CheckingProductIDRequest
+	11, // 9: product.ProductServic.CheckingProductIDUSer:input_type -> product.CheckingProductIDRequest
 	2,  // 10: product.ProductServic.GetsProduct:output_type -> product.GetProductsResponse
 	4,  // 11: product.ProductServic.BuyProduct:output_type -> product.BuyProductResponse
 	6,  // 12: product.ProductServic.SellProduct:output_type -> product.SellProductResponse
 	10, // 13: product.ProductServic.GetsProductUser:output_type -> product.GetsProductTouserResponse
 	8,  // 14: product.ProductServic.Health:output_type -> product.HealthProductResponse
-	12, // 15: product.ProductServic.CheckingProductID:output_type -> product.CheckingProductIDResponse
+	12, // 15: product.ProductServic.CheckingProductIDUSer:output_type -> product.CheckingProductIDResponse
 	10, // [10:16] is the sub-list for method output_type
 	4,  // [4:10] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
