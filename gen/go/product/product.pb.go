@@ -602,6 +602,86 @@ func (x *CheckingProductIDTheUserHasResponse) GetResult() bool {
 	return false
 }
 
+type BlockProductForSellRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ProductID     string                 `protobuf:"bytes,1,opt,name=productID,proto3" json:"productID,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BlockProductForSellRequest) Reset() {
+	*x = BlockProductForSellRequest{}
+	mi := &file_product_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BlockProductForSellRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BlockProductForSellRequest) ProtoMessage() {}
+
+func (x *BlockProductForSellRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BlockProductForSellRequest.ProtoReflect.Descriptor instead.
+func (*BlockProductForSellRequest) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *BlockProductForSellRequest) GetProductID() string {
+	if x != nil {
+		return x.ProductID
+	}
+	return ""
+}
+
+type BlockProductForSellResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BlockProductForSellResponse) Reset() {
+	*x = BlockProductForSellResponse{}
+	mi := &file_product_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BlockProductForSellResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BlockProductForSellResponse) ProtoMessage() {}
+
+func (x *BlockProductForSellResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_product_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BlockProductForSellResponse.ProtoReflect.Descriptor instead.
+func (*BlockProductForSellResponse) Descriptor() ([]byte, []int) {
+	return file_product_proto_rawDescGZIP(), []int{14}
+}
+
 var File_product_proto protoreflect.FileDescriptor
 
 const file_product_proto_rawDesc = "" +
@@ -636,7 +716,10 @@ const file_product_proto_rawDesc = "" +
 	"\"CheckingProductIDTheUserHasRequest\x12\x1c\n" +
 	"\tproductID\x18\x01 \x01(\tR\tproductID\"=\n" +
 	"#CheckingProductIDTheUserHasResponse\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\bR\x06result2\x87\x04\n" +
+	"\x06result\x18\x01 \x01(\bR\x06result\":\n" +
+	"\x1aBlockProductForSellRequest\x12\x1c\n" +
+	"\tproductID\x18\x01 \x01(\tR\tproductID\"\x1d\n" +
+	"\x1bBlockProductForSellResponse2\xe9\x04\n" +
 	"\rProductServic\x12H\n" +
 	"\vGetsProduct\x12\x1b.product.GetProductsRequest\x1a\x1c.product.GetProductsResponse\x12E\n" +
 	"\n" +
@@ -644,7 +727,8 @@ const file_product_proto_rawDesc = "" +
 	"\vSellProduct\x12\x1b.product.SellProductRequest\x1a\x1c.product.SellProductResponse\x12X\n" +
 	"\x0fGetsProductUser\x12!.product.GetsProductToUserRequest\x1a\".product.GetsProductTouserResponse\x12G\n" +
 	"\x06Health\x12\x1d.product.HealthProductRequest\x1a\x1e.product.HealthProductResponse\x12x\n" +
-	"\x1bCheckingProductIDTheUserHas\x12+.product.CheckingProductIDTheUserHasRequest\x1a,.product.CheckingProductIDTheUserHasResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
+	"\x1bCheckingProductIDTheUserHas\x12+.product.CheckingProductIDTheUserHasRequest\x1a,.product.CheckingProductIDTheUserHasResponse\x12`\n" +
+	"\x13BlockProductForSell\x12#.product.BlockProductForSellRequest\x1a$.product.BlockProductForSellResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
 
 var (
 	file_product_proto_rawDescOnce sync.Once
@@ -658,7 +742,7 @@ func file_product_proto_rawDescGZIP() []byte {
 	return file_product_proto_rawDescData
 }
 
-var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_product_proto_goTypes = []any{
 	(*Product)(nil),                             // 0: product.Product
 	(*GetProductsRequest)(nil),                  // 1: product.GetProductsRequest
@@ -673,28 +757,32 @@ var file_product_proto_goTypes = []any{
 	(*GetsProductTouserResponse)(nil),           // 10: product.GetsProductTouserResponse
 	(*CheckingProductIDTheUserHasRequest)(nil),  // 11: product.CheckingProductIDTheUserHasRequest
 	(*CheckingProductIDTheUserHasResponse)(nil), // 12: product.CheckingProductIDTheUserHasResponse
-	nil,               // 13: product.HealthProductResponse.InfoEntry
-	(*anypb.Any)(nil), // 14: google.protobuf.Any
+	(*BlockProductForSellRequest)(nil),          // 13: product.BlockProductForSellRequest
+	(*BlockProductForSellResponse)(nil),         // 14: product.BlockProductForSellResponse
+	nil,                                         // 15: product.HealthProductResponse.InfoEntry
+	(*anypb.Any)(nil),                           // 16: google.protobuf.Any
 }
 var file_product_proto_depIdxs = []int32{
 	0,  // 0: product.GetProductsResponse.products:type_name -> product.Product
-	13, // 1: product.HealthProductResponse.info:type_name -> product.HealthProductResponse.InfoEntry
+	15, // 1: product.HealthProductResponse.info:type_name -> product.HealthProductResponse.InfoEntry
 	0,  // 2: product.GetsProductTouserResponse.products:type_name -> product.Product
-	14, // 3: product.HealthProductResponse.InfoEntry.value:type_name -> google.protobuf.Any
+	16, // 3: product.HealthProductResponse.InfoEntry.value:type_name -> google.protobuf.Any
 	1,  // 4: product.ProductServic.GetsProduct:input_type -> product.GetProductsRequest
 	3,  // 5: product.ProductServic.BuyProduct:input_type -> product.BuyProductRequest
 	5,  // 6: product.ProductServic.SellProduct:input_type -> product.SellProductRequest
 	9,  // 7: product.ProductServic.GetsProductUser:input_type -> product.GetsProductToUserRequest
 	7,  // 8: product.ProductServic.Health:input_type -> product.HealthProductRequest
 	11, // 9: product.ProductServic.CheckingProductIDTheUserHas:input_type -> product.CheckingProductIDTheUserHasRequest
-	2,  // 10: product.ProductServic.GetsProduct:output_type -> product.GetProductsResponse
-	4,  // 11: product.ProductServic.BuyProduct:output_type -> product.BuyProductResponse
-	6,  // 12: product.ProductServic.SellProduct:output_type -> product.SellProductResponse
-	10, // 13: product.ProductServic.GetsProductUser:output_type -> product.GetsProductTouserResponse
-	8,  // 14: product.ProductServic.Health:output_type -> product.HealthProductResponse
-	12, // 15: product.ProductServic.CheckingProductIDTheUserHas:output_type -> product.CheckingProductIDTheUserHasResponse
-	10, // [10:16] is the sub-list for method output_type
-	4,  // [4:10] is the sub-list for method input_type
+	13, // 10: product.ProductServic.BlockProductForSell:input_type -> product.BlockProductForSellRequest
+	2,  // 11: product.ProductServic.GetsProduct:output_type -> product.GetProductsResponse
+	4,  // 12: product.ProductServic.BuyProduct:output_type -> product.BuyProductResponse
+	6,  // 13: product.ProductServic.SellProduct:output_type -> product.SellProductResponse
+	10, // 14: product.ProductServic.GetsProductUser:output_type -> product.GetsProductTouserResponse
+	8,  // 15: product.ProductServic.Health:output_type -> product.HealthProductResponse
+	12, // 16: product.ProductServic.CheckingProductIDTheUserHas:output_type -> product.CheckingProductIDTheUserHasResponse
+	14, // 17: product.ProductServic.BlockProductForSell:output_type -> product.BlockProductForSellResponse
+	11, // [11:18] is the sub-list for method output_type
+	4,  // [4:11] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name
 	4,  // [4:4] is the sub-list for extension extendee
 	0,  // [0:4] is the sub-list for field type_name
@@ -711,7 +799,7 @@ func file_product_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_product_proto_rawDesc), len(file_product_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

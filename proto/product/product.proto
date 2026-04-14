@@ -13,6 +13,7 @@ service ProductServic {
     rpc GetsProductUser(GetsProductToUserRequest) returns (GetsProductTouserResponse);
     rpc Health(HealthProductRequest) returns (HealthProductResponse);
     rpc CheckingProductIDTheUserHas(CheckingProductIDTheUserHasRequest) returns (CheckingProductIDTheUserHasResponse);
+    rpc BlockProductForSell(BlockProductForSellRequest) returns (BlockProductForSellResponse);
 }
 
 message Product {
@@ -64,3 +65,9 @@ message CheckingProductIDTheUserHasRequest {
 message CheckingProductIDTheUserHasResponse {
     bool result = 1;
 }
+
+message BlockProductForSellRequest {
+    string productID = 1;
+}
+
+message BlockProductForSellResponse {}

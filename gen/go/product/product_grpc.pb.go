@@ -25,6 +25,7 @@ const (
 	ProductServic_GetsProductUser_FullMethodName             = "/product.ProductServic/GetsProductUser"
 	ProductServic_Health_FullMethodName                      = "/product.ProductServic/Health"
 	ProductServic_CheckingProductIDTheUserHas_FullMethodName = "/product.ProductServic/CheckingProductIDTheUserHas"
+	ProductServic_BlockProductForSell_FullMethodName         = "/product.ProductServic/BlockProductForSell"
 )
 
 // ProductServicClient is the client API for ProductServic service.
@@ -37,6 +38,7 @@ type ProductServicClient interface {
 	GetsProductUser(ctx context.Context, in *GetsProductToUserRequest, opts ...grpc.CallOption) (*GetsProductTouserResponse, error)
 	Health(ctx context.Context, in *HealthProductRequest, opts ...grpc.CallOption) (*HealthProductResponse, error)
 	CheckingProductIDTheUserHas(ctx context.Context, in *CheckingProductIDTheUserHasRequest, opts ...grpc.CallOption) (*CheckingProductIDTheUserHasResponse, error)
+	BlockProductForSell(ctx context.Context, in *BlockProductForSellRequest, opts ...grpc.CallOption) (*BlockProductForSellResponse, error)
 }
 
 type productServicClient struct {
@@ -107,6 +109,16 @@ func (c *productServicClient) CheckingProductIDTheUserHas(ctx context.Context, i
 	return out, nil
 }
 
+func (c *productServicClient) BlockProductForSell(ctx context.Context, in *BlockProductForSellRequest, opts ...grpc.CallOption) (*BlockProductForSellResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(BlockProductForSellResponse)
+	err := c.cc.Invoke(ctx, ProductServic_BlockProductForSell_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ProductServicServer is the server API for ProductServic service.
 // All implementations must embed UnimplementedProductServicServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type ProductServicServer interface {
 	GetsProductUser(context.Context, *GetsProductToUserRequest) (*GetsProductTouserResponse, error)
 	Health(context.Context, *HealthProductRequest) (*HealthProductResponse, error)
 	CheckingProductIDTheUserHas(context.Context, *CheckingProductIDTheUserHasRequest) (*CheckingProductIDTheUserHasResponse, error)
+	BlockProductForSell(context.Context, *BlockProductForSellRequest) (*BlockProductForSellResponse, error)
 	mustEmbedUnimplementedProductServicServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedProductServicServer) Health(context.Context, *HealthProductRe
 }
 func (UnimplementedProductServicServer) CheckingProductIDTheUserHas(context.Context, *CheckingProductIDTheUserHasRequest) (*CheckingProductIDTheUserHasResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckingProductIDTheUserHas not implemented")
+}
+func (UnimplementedProductServicServer) BlockProductForSell(context.Context, *BlockProductForSellRequest) (*BlockProductForSellResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BlockProductForSell not implemented")
 }
 func (UnimplementedProductServicServer) mustEmbedUnimplementedProductServicServer() {}
 func (UnimplementedProductServicServer) testEmbeddedByValue()                       {}
@@ -274,6 +290,24 @@ func _ProductServic_CheckingProductIDTheUserHas_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ProductServic_BlockProductForSell_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BlockProductForSellRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ProductServicServer).BlockProductForSell(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ProductServic_BlockProductForSell_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ProductServicServer).BlockProductForSell(ctx, req.(*BlockProductForSellRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ProductServic_ServiceDesc is the grpc.ServiceDesc for ProductServic service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +338,10 @@ var ProductServic_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CheckingProductIDTheUserHas",
 			Handler:    _ProductServic_CheckingProductIDTheUserHas_Handler,
+		},
+		{
+			MethodName: "BlockProductForSell",
+			Handler:    _ProductServic_BlockProductForSell_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
