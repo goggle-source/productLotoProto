@@ -685,7 +685,7 @@ func (*BlockProductForSellResponse) Descriptor() ([]byte, []int) {
 type AddProductWinnerRequest struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	UserIDWinner         string                 `protobuf:"bytes,1,opt,name=userIDWinner,proto3" json:"userIDWinner,omitempty"`
-	AuctionID            string                 `protobuf:"bytes,2,opt,name=auctionID,proto3" json:"auctionID,omitempty"`
+	ProductID            string                 `protobuf:"bytes,2,opt,name=productID,proto3" json:"productID,omitempty"`
 	Price                float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
 	UserIDCreatorAuction string                 `protobuf:"bytes,4,opt,name=userIDCreatorAuction,proto3" json:"userIDCreatorAuction,omitempty"`
 	unknownFields        protoimpl.UnknownFields
@@ -729,9 +729,9 @@ func (x *AddProductWinnerRequest) GetUserIDWinner() string {
 	return ""
 }
 
-func (x *AddProductWinnerRequest) GetAuctionID() string {
+func (x *AddProductWinnerRequest) GetProductID() string {
 	if x != nil {
-		return x.AuctionID
+		return x.ProductID
 	}
 	return ""
 }
@@ -826,7 +826,7 @@ const file_product_proto_rawDesc = "" +
 	"\x1bBlockProductForSellResponse\"\xa5\x01\n" +
 	"\x17AddProductWinnerRequest\x12\"\n" +
 	"\fuserIDWinner\x18\x01 \x01(\tR\fuserIDWinner\x12\x1c\n" +
-	"\tauctionID\x18\x02 \x01(\tR\tauctionID\x12\x14\n" +
+	"\tproductID\x18\x02 \x01(\tR\tproductID\x12\x14\n" +
 	"\x05price\x18\x03 \x01(\x02R\x05price\x122\n" +
 	"\x14userIDCreatorAuction\x18\x04 \x01(\tR\x14userIDCreatorAuction\"\x1a\n" +
 	"\x18AddProductWinnerResponse2\xc2\x05\n" +
