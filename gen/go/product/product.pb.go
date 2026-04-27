@@ -682,30 +682,29 @@ func (*BlockProductForSellResponse) Descriptor() ([]byte, []int) {
 	return file_product_proto_rawDescGZIP(), []int{14}
 }
 
-type AddProductWinnerRequest struct {
+type AddProductWinnerAndDeletePRoductCreatorForAuctionRequest struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
 	UserIDWinner         string                 `protobuf:"bytes,1,opt,name=userIDWinner,proto3" json:"userIDWinner,omitempty"`
 	ProductID            string                 `protobuf:"bytes,2,opt,name=productID,proto3" json:"productID,omitempty"`
-	Price                float32                `protobuf:"fixed32,3,opt,name=price,proto3" json:"price,omitempty"`
-	UserIDCreatorAuction string                 `protobuf:"bytes,4,opt,name=userIDCreatorAuction,proto3" json:"userIDCreatorAuction,omitempty"`
+	UserIDCreatorAuction string                 `protobuf:"bytes,3,opt,name=userIDCreatorAuction,proto3" json:"userIDCreatorAuction,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
 
-func (x *AddProductWinnerRequest) Reset() {
-	*x = AddProductWinnerRequest{}
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) Reset() {
+	*x = AddProductWinnerAndDeletePRoductCreatorForAuctionRequest{}
 	mi := &file_product_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddProductWinnerRequest) String() string {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddProductWinnerRequest) ProtoMessage() {}
+func (*AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) ProtoMessage() {}
 
-func (x *AddProductWinnerRequest) ProtoReflect() protoreflect.Message {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_product_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -717,59 +716,52 @@ func (x *AddProductWinnerRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddProductWinnerRequest.ProtoReflect.Descriptor instead.
-func (*AddProductWinnerRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddProductWinnerAndDeletePRoductCreatorForAuctionRequest.ProtoReflect.Descriptor instead.
+func (*AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) Descriptor() ([]byte, []int) {
 	return file_product_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *AddProductWinnerRequest) GetUserIDWinner() string {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) GetUserIDWinner() string {
 	if x != nil {
 		return x.UserIDWinner
 	}
 	return ""
 }
 
-func (x *AddProductWinnerRequest) GetProductID() string {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) GetProductID() string {
 	if x != nil {
 		return x.ProductID
 	}
 	return ""
 }
 
-func (x *AddProductWinnerRequest) GetPrice() float32 {
-	if x != nil {
-		return x.Price
-	}
-	return 0
-}
-
-func (x *AddProductWinnerRequest) GetUserIDCreatorAuction() string {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) GetUserIDCreatorAuction() string {
 	if x != nil {
 		return x.UserIDCreatorAuction
 	}
 	return ""
 }
 
-type AddProductWinnerResponse struct {
+type AddProductWinnerAndDeletePRoductCreatorForAuctionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *AddProductWinnerResponse) Reset() {
-	*x = AddProductWinnerResponse{}
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionResponse) Reset() {
+	*x = AddProductWinnerAndDeletePRoductCreatorForAuctionResponse{}
 	mi := &file_product_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *AddProductWinnerResponse) String() string {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*AddProductWinnerResponse) ProtoMessage() {}
+func (*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse) ProtoMessage() {}
 
-func (x *AddProductWinnerResponse) ProtoReflect() protoreflect.Message {
+func (x *AddProductWinnerAndDeletePRoductCreatorForAuctionResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_product_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -781,8 +773,8 @@ func (x *AddProductWinnerResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use AddProductWinnerResponse.ProtoReflect.Descriptor instead.
-func (*AddProductWinnerResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use AddProductWinnerAndDeletePRoductCreatorForAuctionResponse.ProtoReflect.Descriptor instead.
+func (*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse) Descriptor() ([]byte, []int) {
 	return file_product_proto_rawDescGZIP(), []int{16}
 }
 
@@ -823,13 +815,12 @@ const file_product_proto_rawDesc = "" +
 	"\x06result\x18\x01 \x01(\bR\x06result\":\n" +
 	"\x1aBlockProductForSellRequest\x12\x1c\n" +
 	"\tproductID\x18\x01 \x01(\tR\tproductID\"\x1d\n" +
-	"\x1bBlockProductForSellResponse\"\xa5\x01\n" +
-	"\x17AddProductWinnerRequest\x12\"\n" +
+	"\x1bBlockProductForSellResponse\"\xb0\x01\n" +
+	"8AddProductWinnerAndDeletePRoductCreatorForAuctionRequest\x12\"\n" +
 	"\fuserIDWinner\x18\x01 \x01(\tR\fuserIDWinner\x12\x1c\n" +
-	"\tproductID\x18\x02 \x01(\tR\tproductID\x12\x14\n" +
-	"\x05price\x18\x03 \x01(\x02R\x05price\x122\n" +
-	"\x14userIDCreatorAuction\x18\x04 \x01(\tR\x14userIDCreatorAuction\"\x1a\n" +
-	"\x18AddProductWinnerResponse2\xc2\x05\n" +
+	"\tproductID\x18\x02 \x01(\tR\tproductID\x122\n" +
+	"\x14userIDCreatorAuction\x18\x03 \x01(\tR\x14userIDCreatorAuction\";\n" +
+	"9AddProductWinnerAndDeletePRoductCreatorForAuctionResponse2\xa6\x06\n" +
 	"\rProductServic\x12H\n" +
 	"\vGetsProduct\x12\x1b.product.GetProductsRequest\x1a\x1c.product.GetProductsResponse\x12E\n" +
 	"\n" +
@@ -838,8 +829,8 @@ const file_product_proto_rawDesc = "" +
 	"\x0fGetsProductUser\x12!.product.GetsProductToUserRequest\x1a\".product.GetsProductTouserResponse\x12G\n" +
 	"\x06Health\x12\x1d.product.HealthProductRequest\x1a\x1e.product.HealthProductResponse\x12x\n" +
 	"\x1bCheckingProductIDTheUserHas\x12+.product.CheckingProductIDTheUserHasRequest\x1a,.product.CheckingProductIDTheUserHasResponse\x12`\n" +
-	"\x13BlockProductForSell\x12#.product.BlockProductForSellRequest\x1a$.product.BlockProductForSellResponse\x12W\n" +
-	"\x10AddProductWinner\x12 .product.AddProductWinnerRequest\x1a!.product.AddProductWinnerResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
+	"\x13BlockProductForSell\x12#.product.BlockProductForSellRequest\x1a$.product.BlockProductForSellResponse\x12\xba\x01\n" +
+	"1AddProductWinnerAndDeletePRoductCreatorForAuction\x12A.product.AddProductWinnerAndDeletePRoductCreatorForAuctionRequest\x1aB.product.AddProductWinnerAndDeletePRoductCreatorForAuctionResponseBBZ@github.com/goggle-source/productLotoProto/gen/go/product;productb\x06proto3"
 
 var (
 	file_product_proto_rawDescOnce sync.Once
@@ -855,25 +846,25 @@ func file_product_proto_rawDescGZIP() []byte {
 
 var file_product_proto_msgTypes = make([]protoimpl.MessageInfo, 18)
 var file_product_proto_goTypes = []any{
-	(*Product)(nil),                             // 0: product.Product
-	(*GetProductsRequest)(nil),                  // 1: product.GetProductsRequest
-	(*GetProductsResponse)(nil),                 // 2: product.GetProductsResponse
-	(*BuyProductRequest)(nil),                   // 3: product.BuyProductRequest
-	(*BuyProductResponse)(nil),                  // 4: product.BuyProductResponse
-	(*SellProductRequest)(nil),                  // 5: product.SellProductRequest
-	(*SellProductResponse)(nil),                 // 6: product.SellProductResponse
-	(*HealthProductRequest)(nil),                // 7: product.HealthProductRequest
-	(*HealthProductResponse)(nil),               // 8: product.HealthProductResponse
-	(*GetsProductToUserRequest)(nil),            // 9: product.GetsProductToUserRequest
-	(*GetsProductTouserResponse)(nil),           // 10: product.GetsProductTouserResponse
-	(*CheckingProductIDTheUserHasRequest)(nil),  // 11: product.CheckingProductIDTheUserHasRequest
-	(*CheckingProductIDTheUserHasResponse)(nil), // 12: product.CheckingProductIDTheUserHasResponse
-	(*BlockProductForSellRequest)(nil),          // 13: product.BlockProductForSellRequest
-	(*BlockProductForSellResponse)(nil),         // 14: product.BlockProductForSellResponse
-	(*AddProductWinnerRequest)(nil),             // 15: product.AddProductWinnerRequest
-	(*AddProductWinnerResponse)(nil),            // 16: product.AddProductWinnerResponse
-	nil,                                         // 17: product.HealthProductResponse.InfoEntry
-	(*anypb.Any)(nil),                           // 18: google.protobuf.Any
+	(*Product)(nil),                                                   // 0: product.Product
+	(*GetProductsRequest)(nil),                                        // 1: product.GetProductsRequest
+	(*GetProductsResponse)(nil),                                       // 2: product.GetProductsResponse
+	(*BuyProductRequest)(nil),                                         // 3: product.BuyProductRequest
+	(*BuyProductResponse)(nil),                                        // 4: product.BuyProductResponse
+	(*SellProductRequest)(nil),                                        // 5: product.SellProductRequest
+	(*SellProductResponse)(nil),                                       // 6: product.SellProductResponse
+	(*HealthProductRequest)(nil),                                      // 7: product.HealthProductRequest
+	(*HealthProductResponse)(nil),                                     // 8: product.HealthProductResponse
+	(*GetsProductToUserRequest)(nil),                                  // 9: product.GetsProductToUserRequest
+	(*GetsProductTouserResponse)(nil),                                 // 10: product.GetsProductTouserResponse
+	(*CheckingProductIDTheUserHasRequest)(nil),                        // 11: product.CheckingProductIDTheUserHasRequest
+	(*CheckingProductIDTheUserHasResponse)(nil),                       // 12: product.CheckingProductIDTheUserHasResponse
+	(*BlockProductForSellRequest)(nil),                                // 13: product.BlockProductForSellRequest
+	(*BlockProductForSellResponse)(nil),                               // 14: product.BlockProductForSellResponse
+	(*AddProductWinnerAndDeletePRoductCreatorForAuctionRequest)(nil),  // 15: product.AddProductWinnerAndDeletePRoductCreatorForAuctionRequest
+	(*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse)(nil), // 16: product.AddProductWinnerAndDeletePRoductCreatorForAuctionResponse
+	nil,               // 17: product.HealthProductResponse.InfoEntry
+	(*anypb.Any)(nil), // 18: google.protobuf.Any
 }
 var file_product_proto_depIdxs = []int32{
 	0,  // 0: product.GetProductsResponse.products:type_name -> product.Product
@@ -887,7 +878,7 @@ var file_product_proto_depIdxs = []int32{
 	7,  // 8: product.ProductServic.Health:input_type -> product.HealthProductRequest
 	11, // 9: product.ProductServic.CheckingProductIDTheUserHas:input_type -> product.CheckingProductIDTheUserHasRequest
 	13, // 10: product.ProductServic.BlockProductForSell:input_type -> product.BlockProductForSellRequest
-	15, // 11: product.ProductServic.AddProductWinner:input_type -> product.AddProductWinnerRequest
+	15, // 11: product.ProductServic.AddProductWinnerAndDeletePRoductCreatorForAuction:input_type -> product.AddProductWinnerAndDeletePRoductCreatorForAuctionRequest
 	2,  // 12: product.ProductServic.GetsProduct:output_type -> product.GetProductsResponse
 	4,  // 13: product.ProductServic.BuyProduct:output_type -> product.BuyProductResponse
 	6,  // 14: product.ProductServic.SellProduct:output_type -> product.SellProductResponse
@@ -895,7 +886,7 @@ var file_product_proto_depIdxs = []int32{
 	8,  // 16: product.ProductServic.Health:output_type -> product.HealthProductResponse
 	12, // 17: product.ProductServic.CheckingProductIDTheUserHas:output_type -> product.CheckingProductIDTheUserHasResponse
 	14, // 18: product.ProductServic.BlockProductForSell:output_type -> product.BlockProductForSellResponse
-	16, // 19: product.ProductServic.AddProductWinner:output_type -> product.AddProductWinnerResponse
+	16, // 19: product.ProductServic.AddProductWinnerAndDeletePRoductCreatorForAuction:output_type -> product.AddProductWinnerAndDeletePRoductCreatorForAuctionResponse
 	12, // [12:20] is the sub-list for method output_type
 	4,  // [4:12] is the sub-list for method input_type
 	4,  // [4:4] is the sub-list for extension type_name

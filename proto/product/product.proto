@@ -14,7 +14,7 @@ service ProductServic {
     rpc Health(HealthProductRequest) returns (HealthProductResponse);
     rpc CheckingProductIDTheUserHas(CheckingProductIDTheUserHasRequest) returns (CheckingProductIDTheUserHasResponse);
     rpc BlockProductForSell(BlockProductForSellRequest) returns (BlockProductForSellResponse);
-    rpc AddProductWinner(AddProductWinnerRequest) returns (AddProductWinnerResponse);
+    rpc AddProductWinnerAndDeletePRoductCreatorForAuction(AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) returns (AddProductWinnerAndDeletePRoductCreatorForAuctionResponse);
 }
 
 message Product {
@@ -73,11 +73,10 @@ message BlockProductForSellRequest {
 
 message BlockProductForSellResponse {}
 
-message AddProductWinnerRequest{
+message AddProductWinnerAndDeletePRoductCreatorForAuctionRequest{
     string userIDWinner = 1;
     string productID = 2;
-    float price = 3;
-    string userIDCreatorAuction = 4;
+    string userIDCreatorAuction = 3;
 }
 
-message AddProductWinnerResponse {}
+message AddProductWinnerAndDeletePRoductCreatorForAuctionResponse {}

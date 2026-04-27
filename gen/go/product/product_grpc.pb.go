@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ProductServic_GetsProduct_FullMethodName                 = "/product.ProductServic/GetsProduct"
-	ProductServic_BuyProduct_FullMethodName                  = "/product.ProductServic/BuyProduct"
-	ProductServic_SellProduct_FullMethodName                 = "/product.ProductServic/SellProduct"
-	ProductServic_GetsProductUser_FullMethodName             = "/product.ProductServic/GetsProductUser"
-	ProductServic_Health_FullMethodName                      = "/product.ProductServic/Health"
-	ProductServic_CheckingProductIDTheUserHas_FullMethodName = "/product.ProductServic/CheckingProductIDTheUserHas"
-	ProductServic_BlockProductForSell_FullMethodName         = "/product.ProductServic/BlockProductForSell"
-	ProductServic_AddProductWinner_FullMethodName            = "/product.ProductServic/AddProductWinner"
+	ProductServic_GetsProduct_FullMethodName                                       = "/product.ProductServic/GetsProduct"
+	ProductServic_BuyProduct_FullMethodName                                        = "/product.ProductServic/BuyProduct"
+	ProductServic_SellProduct_FullMethodName                                       = "/product.ProductServic/SellProduct"
+	ProductServic_GetsProductUser_FullMethodName                                   = "/product.ProductServic/GetsProductUser"
+	ProductServic_Health_FullMethodName                                            = "/product.ProductServic/Health"
+	ProductServic_CheckingProductIDTheUserHas_FullMethodName                       = "/product.ProductServic/CheckingProductIDTheUserHas"
+	ProductServic_BlockProductForSell_FullMethodName                               = "/product.ProductServic/BlockProductForSell"
+	ProductServic_AddProductWinnerAndDeletePRoductCreatorForAuction_FullMethodName = "/product.ProductServic/AddProductWinnerAndDeletePRoductCreatorForAuction"
 )
 
 // ProductServicClient is the client API for ProductServic service.
@@ -40,7 +40,7 @@ type ProductServicClient interface {
 	Health(ctx context.Context, in *HealthProductRequest, opts ...grpc.CallOption) (*HealthProductResponse, error)
 	CheckingProductIDTheUserHas(ctx context.Context, in *CheckingProductIDTheUserHasRequest, opts ...grpc.CallOption) (*CheckingProductIDTheUserHasResponse, error)
 	BlockProductForSell(ctx context.Context, in *BlockProductForSellRequest, opts ...grpc.CallOption) (*BlockProductForSellResponse, error)
-	AddProductWinner(ctx context.Context, in *AddProductWinnerRequest, opts ...grpc.CallOption) (*AddProductWinnerResponse, error)
+	AddProductWinnerAndDeletePRoductCreatorForAuction(ctx context.Context, in *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest, opts ...grpc.CallOption) (*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse, error)
 }
 
 type productServicClient struct {
@@ -121,10 +121,10 @@ func (c *productServicClient) BlockProductForSell(ctx context.Context, in *Block
 	return out, nil
 }
 
-func (c *productServicClient) AddProductWinner(ctx context.Context, in *AddProductWinnerRequest, opts ...grpc.CallOption) (*AddProductWinnerResponse, error) {
+func (c *productServicClient) AddProductWinnerAndDeletePRoductCreatorForAuction(ctx context.Context, in *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest, opts ...grpc.CallOption) (*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(AddProductWinnerResponse)
-	err := c.cc.Invoke(ctx, ProductServic_AddProductWinner_FullMethodName, in, out, cOpts...)
+	out := new(AddProductWinnerAndDeletePRoductCreatorForAuctionResponse)
+	err := c.cc.Invoke(ctx, ProductServic_AddProductWinnerAndDeletePRoductCreatorForAuction_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -142,7 +142,7 @@ type ProductServicServer interface {
 	Health(context.Context, *HealthProductRequest) (*HealthProductResponse, error)
 	CheckingProductIDTheUserHas(context.Context, *CheckingProductIDTheUserHasRequest) (*CheckingProductIDTheUserHasResponse, error)
 	BlockProductForSell(context.Context, *BlockProductForSellRequest) (*BlockProductForSellResponse, error)
-	AddProductWinner(context.Context, *AddProductWinnerRequest) (*AddProductWinnerResponse, error)
+	AddProductWinnerAndDeletePRoductCreatorForAuction(context.Context, *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) (*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse, error)
 	mustEmbedUnimplementedProductServicServer()
 }
 
@@ -174,8 +174,8 @@ func (UnimplementedProductServicServer) CheckingProductIDTheUserHas(context.Cont
 func (UnimplementedProductServicServer) BlockProductForSell(context.Context, *BlockProductForSellRequest) (*BlockProductForSellResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BlockProductForSell not implemented")
 }
-func (UnimplementedProductServicServer) AddProductWinner(context.Context, *AddProductWinnerRequest) (*AddProductWinnerResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddProductWinner not implemented")
+func (UnimplementedProductServicServer) AddProductWinnerAndDeletePRoductCreatorForAuction(context.Context, *AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) (*AddProductWinnerAndDeletePRoductCreatorForAuctionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddProductWinnerAndDeletePRoductCreatorForAuction not implemented")
 }
 func (UnimplementedProductServicServer) mustEmbedUnimplementedProductServicServer() {}
 func (UnimplementedProductServicServer) testEmbeddedByValue()                       {}
@@ -324,20 +324,20 @@ func _ProductServic_BlockProductForSell_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ProductServic_AddProductWinner_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddProductWinnerRequest)
+func _ProductServic_AddProductWinnerAndDeletePRoductCreatorForAuction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddProductWinnerAndDeletePRoductCreatorForAuctionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ProductServicServer).AddProductWinner(ctx, in)
+		return srv.(ProductServicServer).AddProductWinnerAndDeletePRoductCreatorForAuction(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: ProductServic_AddProductWinner_FullMethodName,
+		FullMethod: ProductServic_AddProductWinnerAndDeletePRoductCreatorForAuction_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ProductServicServer).AddProductWinner(ctx, req.(*AddProductWinnerRequest))
+		return srv.(ProductServicServer).AddProductWinnerAndDeletePRoductCreatorForAuction(ctx, req.(*AddProductWinnerAndDeletePRoductCreatorForAuctionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -378,8 +378,8 @@ var ProductServic_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ProductServic_BlockProductForSell_Handler,
 		},
 		{
-			MethodName: "AddProductWinner",
-			Handler:    _ProductServic_AddProductWinner_Handler,
+			MethodName: "AddProductWinnerAndDeletePRoductCreatorForAuction",
+			Handler:    _ProductServic_AddProductWinnerAndDeletePRoductCreatorForAuction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
