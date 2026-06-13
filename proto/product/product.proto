@@ -15,6 +15,7 @@ service ProductServic {
     rpc CheckingProductIDTheUserHas(CheckingProductIDTheUserHasRequest) returns (CheckingProductIDTheUserHasResponse);
     rpc BlockProductForSell(BlockProductForSellRequest) returns (BlockProductForSellResponse);
     rpc AddProductWinnerAndDeletePRoductCreatorForAuction(AddProductWinnerAndDeletePRoductCreatorForAuctionRequest) returns (AddProductWinnerAndDeletePRoductCreatorForAuctionResponse);
+    rpc UnblockProductIDTheUserHas(UnblockProductIDTheUserHasRequest) returns (UnblockProductIDTheUserHasResponse); 
 }
 
 message Product {
@@ -80,3 +81,9 @@ message AddProductWinnerAndDeletePRoductCreatorForAuctionRequest{
 }
 
 message AddProductWinnerAndDeletePRoductCreatorForAuctionResponse {}
+
+message UnblockProductIDTheUserHasRequest {
+    string productID = 1;
+}
+
+message UnblockProductIDTheUserHasResponse {}
